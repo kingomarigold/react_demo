@@ -1,0 +1,33 @@
+{
+  "engines": {
+    "node": ">= 0.10.0"
+  },
+  "devDependencies": {
+    "bootstrap": "^3.3.7",
+    "codeceptjs": "^0.3.3",
+    "grunt": "~0.4.5",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-jshint": "^1.0.0",
+    "grunt-contrib-qunit": "^1.2.0",
+    "grunt-contrib-uglify": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-karma": "^0.12.2",
+    "jasmine": "^2.5.2",
+    "jasmine-core": "^2.4.1",
+    "jquery": "^3.1.1",
+    "karma": "^0.13.22",
+    "karma-jasmine": "^0.3.8",
+    "karma-jasmine-html-reporter": "^0.2.0",
+    "karma-phantomjs-launcher": "^1.0.0",
+    "karma-requirejs": "^0.2.6",
+    "phantomjs-prebuilt": "^2.1.7",
+    "react": "^15.3.2",
+    "react-addons-test-utils": "^15.3.2",
+    "react-dom": "^15.3.2",
+    "requirejs": "^2.2.0",
+    "wiredep": "^4.0.0"
+  },
+  "dependencies": {
+    "karma-spec-reporter": "0.0.26"
+  }
+}

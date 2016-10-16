@@ -1,0 +1,24 @@
+{
+  "name": "react_demo",
+  "description": "Bower file",
+  "main": "bower.json",
+  "authors": [
+    "kingomarigold"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "appPath": "src/main/static",
+  "dependencies": {
+    "react": "^15.3.2",
+    "jquery": "^3.1.1",
+    "bootstrap": "^3.3.7"
+  },
+  "homepage": "https://github.com/kingomarigold/react_demo",
+  "private": true
+}
