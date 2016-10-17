@@ -1,6 +1,5 @@
 var DropdownItem = React.createClass({
 	_onClick: function() {
-		console.log(this.props.item.id);
 		this.props.onItemClick(this.props.item);
 	},
 	render: function() {
@@ -38,11 +37,35 @@ var DropDown = React.createClass({
   }
 });
 
-
+var EmiCalculator = React.createClass({
+	render: function() {
+		var emi ='';
+		if (this.props.bank && this.props.term && this.props.monthlyIncome && this.props.loanAmount) {
+			var interestRate = parseFloat(this.props.bank.interest);
+			var loanAmount = parseFloat(this.props.loanAmount);
+			var term = parseFloat(this.props.term.value);
+			emi = (loanAmount + loanAmount * interestRate * term/100)/(term*12);
+		}
+		return (
+			<div className="row">
+				<div className="row">
+					<div className="panel-body">
+						<h3>Your Monthly EMI</h3>
+					</div>
+				</div>
+				<div className="row">
+					<div className="emi-display">
+						{emi}
+					</div>
+				</div>
+			</div>
+		);
+	}
+});
 
 var Application = React.createClass({
 	getInitialState: function() {
-		return {banks: [],terms:[],selectedBank:{},selectedTerm:{}};
+		return {banks: [],terms:[],selectedBank:{},selectedTerm:{},loanAmount:'',monthlyIncome:''};
 	},
 	getBanks: function() {
 		var self = this;
@@ -68,6 +91,12 @@ var Application = React.createClass({
 		this.getBanks();
 		this.getTerms();
 	},
+	changeMonthlyIncome: function(event) {
+		this.setState({monthlyIncome:$(event.target).val()});
+	},
+	changeLoanAmount: function(event) {
+		this.setState({loanAmount:$(event.target).val()});
+	},
 	render:function() {
 		return (
 			<div className="row">
@@ -87,7 +116,20 @@ var Application = React.createClass({
 								<DropDown name="Select Term" options={this.state.terms} onItemClick={this.selectTerm}/>
 							</div>
 						</div>
+						<div className="row">
+							<div className="col-md-1 col-lg-1 col-sm-1 col-xs-1">
+							</div>
+							<div className="col-md-5 col-lg-5 col-sm-5 col-xs-5">
+								<input placeholder="Monthly Income" value={this.state.monthlyIncome} onChange={this.changeMonthlyIncome}/>
+							</div>
+							<div className="col-md-1 col-lg-1 col-sm-1 col-xs-1">
+							</div>
+							<div className="col-md-5 col-lg-5 col-sm-5 col-xs-5">
+								<input placeholder="Loan Amount" value={this.state.loanAmount} onChange={this.changeLoanAmount}/>
+							</div>
+						</div>
 					</div>
+					
 				</div>
 				<div className="col-md-6 col-lg-6 col-sm-6 col-xs-6">
 					<div className="center-panel">
@@ -103,9 +145,12 @@ var Application = React.createClass({
 								Term: {this.state.selectedTerm.value}
 							</div>
 						</div>
+						<EmiCalculator bank={this.state.selectedBank} term={this.state.selectedTerm} loanAmount={this.state.loanAmount} monthlyIncome={this.state.monthlyIncome}/>
 					</div>
+					
 				</div>
 			</div>
+			
 		);
 	}
 });
