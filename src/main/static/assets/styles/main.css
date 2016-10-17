@@ -1,0 +1,15 @@
+.center-heading{
+	width:20%;
+	margin:auto;
+}
+
+.center-panel {
+	width:80%;
+	margin:auto;
+	border:2px solid grey;
+}
+
+.panel-body {
+	width:90%;
+	margin:auto;
+}
